@@ -1,6 +1,6 @@
 import './App.css';
 import Weather from "./Weather"
-import ClipLoader from "react-spinners/ClipLoader";
+
 
 function App() {
   return (
