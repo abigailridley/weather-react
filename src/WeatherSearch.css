@@ -1,0 +1,13 @@
+.WeatherSearch ul {
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: none;
+}
+
+.WeatherSearch .temperature {
+    font-size: 40px;
+}
+
+.WeatherSearch .description {
+    text-transform: capitalize;
+}

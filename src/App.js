@@ -1,15 +1,20 @@
 import './App.css';
-import Weather from "./Weather"
+import WeatherSearch from "./WeatherSearch"
+import React from 'react';
+import Footer from './Footer';
+
+
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Weather Search</h1>
-        <Weather/>
-
-      </header>
+      
+        <h1>Weather</h1>
+      
+        <WeatherSearch />
+   
+ <Footer />
     </div>
   );
 }
