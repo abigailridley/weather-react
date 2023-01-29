@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./WeatherSearch.css"
+import "./Weather.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function WeatherSearch() {
+export default function Weather() {
   const [city, setCity] = useState("Brighton");
- 
+ const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
   const [weather, setWeather] = useState({});
 
   function displayWeather(response) {
@@ -38,7 +40,7 @@ export default function WeatherSearch() {
 
 let form =
  (
-    <div className="WeatherSearch">
+    <div className="Weather container">
       <form onSubmit={handleSubmit}>
         <input
          onChange={updateCity}
@@ -46,9 +48,10 @@ let form =
           placeholder="Search City..."
           autoFocus
           autoComplete="off"
+className="form-control"
         />
-        <button className="search-button" type="submit">
-          <i className="fa-solid fa-magnifying-glass"></i>
+        <button className="search-button btn btn-primary" type="submit">
+        {searchIcon}
         </button>
       </form>
     </div>
@@ -57,14 +60,14 @@ let form =
 
  
     return (
-      <div className="WeatherSearch">
+      <div className="Weather">
         {form}
        
             <h2>{weather.name}</h2>
        <span className="temperature">{Math.round(weather.temperature)}°C</span>
        <span>            <img src={weather.icon} alt={weather.description} /></span>
        <div className="description">{weather.description}</div>
-        <ul className="wweather-info">
+        <ul className="weather-info">
        
        <li>Humidity: {weather.humidity}%</li> 
           <li>Wind: {weather.wind}km/h</li>
