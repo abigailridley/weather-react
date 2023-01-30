@@ -1,38 +1,48 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./Weather.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function Weather() {
-  const [city, setCity] = useState("Brighton");
- const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
-  const [weather, setWeather] = useState({});
+export default function Weather(props) {
+  const [weather, setWeather] = useState({ ready: false});
+  const [city, setCity] = useState(props.defaultCity);
+  
+  
+  const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
+  
+  function handleResponse(response) {
 
-  function displayWeather(response) {
- 
     setWeather({
-        name: response.data.name,
-      temperature: response.data.main.temp,
+      ready: true,
+      city: response.data.city,
+      date: new Date(response.data.time * 1000),
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
+      icon: response.data.condition.icon_url,
+      temperature: response.data.temperature.current,
       wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description
     });
    
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    let apiKey = "094780c710fa4efd669f0df8c3991927";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeather);
+  
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
-  function updateCity(event) {
-    setCity(event.target.value);
+  function search() {
+  const apiKey = "59a2t7f1c9c6e6ee3b75o1dda2249107";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(handleResponse);
   }
 
  
@@ -46,12 +56,12 @@ let form =
         <div className="row">
           <div className="col-9">
         <input
-         onChange={updateCity}
+         onChange={handleCityChange}
           type="search"
           placeholder="Search City..."
           autoFocus
           autoComplete="off"
-className="form-control"
+          className="form-control"
         />
         </div>
         <div className="col-3">
@@ -65,35 +75,17 @@ className="form-control"
   );
 
 
- 
-    return (
-      <div className="Weather">
-        {form}
-       
-            <h2>Brighton</h2>
-          <p>Wednesday 07:00</p>
-              
-        <div className="row">
-          <div className="col-6">
-           <div className="clearfix">
-               <img  className="float-start" src= "http://openweathermap.org/img/wn/01d@2x.png" alt={weather.description}  />
-   
-     <span className="float-start"> <span className="temperature">9</span><span className="unit">°C</span></span> 
-       
-      </div>
-      
-       <div className="description">Clear Sky</div>
-      </div>
-       <div className="col-6">
-        <ul className="weather-info">
-       
-       <li>Humidity: 65%</li> 
-          <li>Wind: 3.6km/h</li>
-            </ul>
-            </div>
-        </div>
-      
-      </div>
-    );
+if (weather.ready) {
+  return (
+  <div className="Weather">
+    {form}
+<WeatherInfo data={weather} />
+  </div>)
+}
+else {
+  search()
+  return "Loading..."
+}
+            
 
 }
