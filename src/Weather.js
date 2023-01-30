@@ -21,6 +21,7 @@ export default function Weather() {
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description
     });
+   
   }
 
   function handleSubmit(event) {
@@ -40,8 +41,10 @@ export default function Weather() {
 
 let form =
  (
-    <div className="Weather container">
+    <div>
       <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col-9">
         <input
          onChange={updateCity}
           type="search"
@@ -50,11 +53,15 @@ let form =
           autoComplete="off"
 className="form-control"
         />
-        <button className="search-button btn btn-primary" type="submit">
+        </div>
+        <div className="col-3">
+        <button className="search-button btn btn-primary w-100" type="submit">
         {searchIcon}
         </button>
-      </form>
+        </div>
     </div>
+      </form>
+      </div>
   );
 
 
@@ -63,18 +70,28 @@ className="form-control"
       <div className="Weather">
         {form}
        
-            <h2>{weather.name}</h2>
-       <span className="temperature">{Math.round(weather.temperature)}°C</span>
-       <span>            <img src={weather.icon} alt={weather.description} /></span>
-       <div className="description">{weather.description}</div>
+            <h2>Brighton</h2>
+          <p>Wednesday 07:00</p>
+              
+        <div className="row">
+          <div className="col-6">
+           <div className="clearfix">
+               <img  className="float-start" src= "http://openweathermap.org/img/wn/01d@2x.png" alt={weather.description}  />
+   
+     <span className="float-start"> <span className="temperature">9</span><span className="unit">°C</span></span> 
+       
+      </div>
+      
+       <div className="description">Clear Sky</div>
+      </div>
+       <div className="col-6">
         <ul className="weather-info">
        
-       <li>Humidity: {weather.humidity}%</li> 
-          <li>Wind: {weather.wind}km/h</li>
+       <li>Humidity: 65%</li> 
+          <li>Wind: 3.6km/h</li>
             </ul>
-          
-
-        
+            </div>
+        </div>
       
       </div>
     );
