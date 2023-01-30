@@ -65,7 +65,7 @@ let form =
         />
         </div>
         <div className="col-3">
-        <button className="search-button btn btn-primary w-100" type="submit">
+        <button className="search-button btn btn-primary" type="submit">
         {searchIcon}
         </button>
         </div>
