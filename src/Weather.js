@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast  from "./WeatherForecast"
 import axios from "axios";
 
 import "./Weather.css";
@@ -27,7 +28,7 @@ export default function Weather(props) {
       temperature: response.data.temperature.current,
       wind: response.data.wind.speed,
     });
-   
+ 
   }
 
   function handleSubmit(event) {
@@ -80,6 +81,7 @@ if (weather.ready) {
   <div className="Weather">
     {form}
 <WeatherInfo data={weather} />
+<WeatherForecast />
   </div>)
 }
 else {
