@@ -1,0 +1,11 @@
+.WeatherInfo .description {
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+ .WeatherInfo .weather-info {
+    opacity: 0.8;
+ }
+
+ .WeatherInfo h1 {
+    margin-bottom: 0px;
+ }
