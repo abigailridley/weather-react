@@ -41,7 +41,7 @@ export default function Weather(props) {
   }
 
   function search() {
-  const apiKey = "59a2t7f1c9c6e6ee3b75o1dda2249107";
+  const apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(handleResponse);
   }
@@ -77,11 +77,12 @@ let form =
 
 
 if (weather.ready) {
+  
   return (
   <div className="Weather">
     {form}
 <WeatherInfo data={weather} />
-<WeatherForecast />
+<WeatherForecast data={weather.city}/>
   </div>)
 }
 else {
@@ -89,5 +90,5 @@ else {
   return "Loading..."
 }
             
-
 }
+
