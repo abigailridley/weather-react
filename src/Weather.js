@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast  from "./WeatherForecast"
 import axios from "axios";
+import Geolocation from "./Geolocation.js";
 
 import "./Weather.css";
 
@@ -55,7 +56,7 @@ let form =
     <div>
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <div className="col-9">
+          <div className="col-8 search-bar-input">
         <input
          onChange={handleCityChange}
           type="search"
@@ -65,10 +66,13 @@ let form =
           className="form-control"
         />
         </div>
-        <div className="col-3">
+        <div className="col-2 button-div">
         <button className="search-button btn btn-primary" type="submit">
         {searchIcon}
         </button>
+        </div>
+        <div className="col-2">
+          <Geolocation />
         </div>
     </div>
       </form>
