@@ -66,12 +66,12 @@ let form =
           className="form-control"
         />
         </div>
-        <div className="col-1 button-div">
+        <div className="col-1 search-button-div">
         <button className="search-button btn btn-primary" type="submit">
         {searchIcon}
         </button>
         </div>
-        <div className="col-2">
+        <div className="col-1">
           <Geolocation />
         </div>
     </div>
