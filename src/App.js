@@ -1,5 +1,5 @@
 import './App.css';
-import Weather from "./Weather"
+import WeatherSearch from "./WeatherSearch"
 import React from 'react';
 import Footer from './Footer';
 
@@ -13,7 +13,7 @@ function App() {
       
     
       
-        <Weather defaultCity="Brighton"/>
+        <WeatherSearch defaultCity="Brighton"/>
    
  <Footer />
     </div>

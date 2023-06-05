@@ -1,4 +1,4 @@
-.Weather {
+.WeatherSearch {
     border: 1px solid #dadde1;
     padding: 16px;
     margin: 30px 0 0 0;
@@ -6,18 +6,18 @@
     max-width: 600px;
 }
 
-.Weather h2 {
+.WeatherSearch h2 {
     font-size: 24px;
     
     margin: 20px 0 0 0;
     line-height: 29px;
 }
 
-.Weather form {
+.WeatherSearch form {
     margin-bottom: 20px;
 }
 
-.Weather ul {
+.WeatherSearch ul {
   
     list-style: none;
     margin: 0;
@@ -25,29 +25,29 @@
 
 }
 
-.Weather li {
+.WeatherSearch li {
     font-size: 16px;
     line-height: 19px;
 }
 
-.Weather img {
+.WeatherSearch img {
     height: 70px;
     display: inline-block;
     margin: 0 auto;
     padding: 0 auto;
 }
 
-.Weather .temperature {
+.WeatherSearch .temperature {
     font-size: 64px;
     font-weight: bold;
     line-height: 64px;
 }
 
-.Weather .description {
+.WeatherSearch .description {
     text-transform: capitalize;
 }
 
-.Weather .unit {
+.WeatherSearch .unit {
     font-size: 16px;
     position: relative;
     line-height: 1;
@@ -55,10 +55,10 @@
     margin-left: 5px;
 }
 
-.Weather .search-button-div {
+.WeatherSearch .search-button-div {
   padding:  0px 2px 0px 0px;
 }
 
-.Weather .search-bar-input {
-    padding-right: 2px;
+.WeatherSearch .search-bar-input {
+    padding-right: 5px;
 }

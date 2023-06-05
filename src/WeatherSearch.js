@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast  from "./WeatherForecast"
 import axios from "axios";
-import Geolocation from "./Geolocation.js";
 
-import "./Weather.css";
+
+import "./WeatherSearch.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function Weather(props) {
+export default function WeatherSearch(props) {
   const [weather, setWeather] = useState({ ready: false});
   const [city, setCity] = useState(props.defaultCity);
-  
-  
+  const locationIcon = <FontAwesomeIcon icon={faLocationCrosshairs} />
   const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
-  
+  console.log(`https://api.shecodes.io/weather/v1/current?lat=38.71667&lon=-9.13333&key=59a2t7f1c9c6e6ee3b75o1dda2249107&units=metric`)
   function handleResponse(response) {
 
     setWeather({
@@ -30,6 +30,20 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
     });
  
+  }
+function setGeolocation(position) {
+  const lon = position.coordinates.longitude;
+  const lat = position.coordinates.latitude;
+  console.log(lon)
+  const apiKey = "59a2t7f1c9c6e6ee3b75o1dda2249107";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`
+  axios.get(apiUrl).then(handleResponse);
+}
+
+  function handleGeolocation(event) {
+    event.preventDefault();
+navigator.geolocation.getCurrentPosition(setGeolocation);
+
   }
 
   function handleSubmit(event) {
@@ -72,7 +86,9 @@ let form =
         </button>
         </div>
         <div className="col-1">
-          <Geolocation />
+        <button className="search-button btn btn-primary" type="submit" onClick={handleGeolocation} >
+          {locationIcon}
+          </button>
         </div>
     </div>
       </form>
@@ -83,7 +99,7 @@ let form =
 if (weather.ready) {
   
   return (
-  <div className="Weather">
+  <div className="WeatherSearch">
     {form}
 <WeatherInfo data={weather} />
 <WeatherForecast data={weather.city}/>
