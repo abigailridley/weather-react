@@ -4,9 +4,13 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
 export default function Geolocation() {
     const locationIcon = <FontAwesomeIcon icon={faLocationCrosshairs} />
+
+    function updateGeolocation(event) {
+        event.preventDefault()
+    }
     return (
         <div > 
-            <button className="search-button btn btn-primary" type="submit">{locationIcon}</button>
+            <button className="search-button btn btn-primary" type="submit" onClick={updateGeolocation}>{locationIcon}</button>
         </div>
     )
 }
