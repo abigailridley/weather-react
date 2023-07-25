@@ -13,7 +13,7 @@ function App() {
       
     
       
-        <WeatherSearch defaultCity="Brighton"/>
+        <WeatherSearch defaultCity="London"/>
    
  <Footer />
     </div>
